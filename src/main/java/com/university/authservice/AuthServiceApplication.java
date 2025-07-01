@@ -24,77 +24,77 @@ public class AuthServiceApplication {
 
 			// Permissions
 
-			PermissionEntity createUser = PermissionEntity.builder()
+			PermissionEntity CREATE_USER = PermissionEntity.builder()
 					.permissionName(PermissionEnum.CREATE_USER)
 					.build();
 
-			PermissionEntity readUser = PermissionEntity.builder()
+			PermissionEntity READ_USER = PermissionEntity.builder()
 					.permissionName(PermissionEnum.READ_USER)
 					.build();
 
-			PermissionEntity updateUser = PermissionEntity.builder()
+			PermissionEntity UPDATE_USER = PermissionEntity.builder()
 					.permissionName(PermissionEnum.UPDATE_USER)
 					.build();
 
-			PermissionEntity deleteUser = PermissionEntity.builder()
+			PermissionEntity DELETE_USER = PermissionEntity.builder()
 					.permissionName(PermissionEnum.DELETE_USER)
 					.build();
 
-			PermissionEntity disableUser = PermissionEntity.builder()
+			PermissionEntity DISABLE_USER = PermissionEntity.builder()
 					.permissionName(PermissionEnum.DISABLE_USER)
 					.build();
 
-			PermissionEntity enableUser = PermissionEntity.builder()
+			PermissionEntity ENABLE_USER = PermissionEntity.builder()
 					.permissionName(PermissionEnum.ENABLE_USER)
 					.build();
 
-			PermissionEntity createActivity = PermissionEntity.builder()
+			PermissionEntity CREATE_ACTIVITY = PermissionEntity.builder()
 					.permissionName(PermissionEnum.CREATE_ACTIVITY)
 					.build();
 
-			PermissionEntity readActivity = PermissionEntity.builder()
+			PermissionEntity READ_ACTIVITY = PermissionEntity.builder()
 					.permissionName(PermissionEnum.READ_ACTIVITY)
 					.build();
 
-			PermissionEntity updateActivity = PermissionEntity.builder()
+			PermissionEntity UPDATE_ACTIVITY = PermissionEntity.builder()
 					.permissionName(PermissionEnum.UPDATE_ACTIVITY)
 					.build();
 
-			PermissionEntity deleteActivity = PermissionEntity.builder()
+			PermissionEntity DELETE_ACTIVITY = PermissionEntity.builder()
 					.permissionName(PermissionEnum.DELETE_ACTIVITY)
 					.build();
 
-			PermissionEntity disableActivity = PermissionEntity.builder()
+			PermissionEntity DISABLE_ACTIVITY = PermissionEntity.builder()
 					.permissionName(PermissionEnum.DISABLE_ACTIVITY)
 					.build();
 
-			PermissionEntity enableActivity = PermissionEntity.builder()
+			PermissionEntity ENABLE_ACTIVITY = PermissionEntity.builder()
 					.permissionName(PermissionEnum.ENABLE_ACTIVITY)
 					.build();
 
-			PermissionEntity enrollActivity = PermissionEntity.builder()
+			PermissionEntity ENROLL_ACTIVITY = PermissionEntity.builder()
 					.permissionName(PermissionEnum.ENROLL_ACTIVITY)
 					.build();
 
-			PermissionEntity unenrollActivity = PermissionEntity.builder()
+			PermissionEntity UNENROLL_ACTIVITY = PermissionEntity.builder()
 					.permissionName(PermissionEnum.UNENROLL_ACTIVITY)
 					.build();
 
 			// Roles
 
-			RoleEntity adminUsers = RoleEntity.builder()
+			RoleEntity ADMIN_USERS = RoleEntity.builder()
 					.roleName(RoleEnum.ADMIN_USERS)
-					.permissionEntities(Set.of(createUser, readUser, updateUser, deleteUser, disableUser, enableUser))
+					.permissionEntities(Set.of(CREATE_USER, READ_USER, UPDATE_USER, DELETE_USER, DISABLE_USER, ENABLE_USER))
 					.build();
 
-			RoleEntity adminActivities = RoleEntity.builder()
+			RoleEntity ADMIN_ACTIVITIES = RoleEntity.builder()
 					.roleName(RoleEnum.ADMIN_ACTIVITIES)
-					.permissionEntities(Set.of(createActivity, readActivity, updateActivity, deleteActivity, disableActivity, enableActivity))
+					.permissionEntities(Set.of(CREATE_ACTIVITY, READ_ACTIVITY, UPDATE_ACTIVITY, DELETE_ACTIVITY, DISABLE_ACTIVITY, ENABLE_ACTIVITY))
 					.build();
 
-			RoleEntity student = RoleEntity.builder()
+			RoleEntity STUDENT = RoleEntity.builder()
 					.roleName(RoleEnum.STUDENT)
-					.permissionEntities(Set.of(readActivity, enrollActivity, unenrollActivity))
+					.permissionEntities(Set.of(READ_ACTIVITY, ENROLL_ACTIVITY, UNENROLL_ACTIVITY))
 					.build();
 
 			// Users Test
@@ -102,7 +102,7 @@ public class AuthServiceApplication {
 			UserEntity adminUsersTest = UserEntity.builder()
 					.username("admin_users_test")
 					.password(new BCryptPasswordEncoder().encode("1234"))
-					.roleEntities(Set.of(adminUsers))
+					.roleEntities(Set.of(ADMIN_USERS))
 					.accountNonExpired(true)
 					.accountNonLocked(true)
 					.credentialsNonExpired(true)
@@ -112,7 +112,7 @@ public class AuthServiceApplication {
 			UserEntity adminActivitiesTest = UserEntity.builder()
 					.username("admin_activities_test")
 					.password(new BCryptPasswordEncoder().encode("1234"))
-					.roleEntities(Set.of(adminActivities))
+					.roleEntities(Set.of(ADMIN_ACTIVITIES))
 					.accountNonExpired(true)
 					.accountNonLocked(true)
 					.credentialsNonExpired(true)
@@ -122,7 +122,7 @@ public class AuthServiceApplication {
 			UserEntity studentTest = UserEntity.builder()
 					.username("student_test")
 					.password(new BCryptPasswordEncoder().encode("1234"))
-					.roleEntities(Set.of(student))
+					.roleEntities(Set.of(STUDENT))
 					.accountNonExpired(true)
 					.accountNonLocked(true)
 					.credentialsNonExpired(true)

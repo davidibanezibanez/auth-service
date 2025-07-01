@@ -36,12 +36,10 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
-                    // Endpoints públicos
                     http.requestMatchers(HttpMethod.POST, "/auth/log-in").permitAll();
-                    http.requestMatchers(HttpMethod.POST, "/auth/sign-up").permitAll();
                     http.requestMatchers(HttpMethod.POST, "/auth/validate-token").permitAll();
-                    http.requestMatchers(HttpMethod.GET, "/auth/user/**").permitAll();
-                    // Todos los demás requieren autenticación
+                    http.requestMatchers(HttpMethod.GET, "/auth/user/**").authenticated();
+                    http.requestMatchers(HttpMethod.POST, "/auth/sign-up").hasAuthority("CREATE_USER");
                     http.anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
